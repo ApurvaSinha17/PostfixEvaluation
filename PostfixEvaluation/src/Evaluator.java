@@ -15,7 +15,7 @@ public class Evaluator {
 				int op1 = Integer.parseInt(Stack.pop());
 				try{
 					int result = calculate(op1, op2, str);
-					System.out.println("--"+result);
+					//System.out.println("--"+result);
 					Stack.push(Integer.toString(result));
 				}
 				catch(ArithmeticException ae){
@@ -34,11 +34,17 @@ public class Evaluator {
 			}
 		}
 		try {
-			if(Stack.getTop() != 0){
+			if(Stack.isEmpty()){
 				System.out.println("Error evaluating Postfix expression");
 				System.exit(0);
 			}
+			
 			finalResult = Integer.parseInt(Stack.pop());
+			
+			if(!Stack.isEmpty()){
+				System.out.println("Error evaluating Postfix expression");
+				System.exit(0);
+			}			
 		} catch (NumberFormatException e) {
 			System.out.println("Error evaluating Postfix expression");
 			e.printStackTrace();
